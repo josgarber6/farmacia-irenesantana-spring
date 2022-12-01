@@ -26,7 +26,7 @@ public class ArticuloService {
     }
 
     @Transactional
-    public void deleteRoom(int id) throws DataAccessException {
+    public void deleteArticulo(int id) throws DataAccessException {
         articuloRepository.deleteById(id);
     }
 }

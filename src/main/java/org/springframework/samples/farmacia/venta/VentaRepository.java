@@ -1,5 +1,11 @@
 package org.springframework.samples.farmacia.venta;
 
-public interface VentaRepository {
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface VentaRepository extends CrudRepository<Venta, Integer> {
+
+    List<Venta> findAll();
   
 }
