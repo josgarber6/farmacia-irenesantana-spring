@@ -7,8 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class VentaService {
-
-    private VentaRepository ventaRepository;
+  private VentaRepository ventaRepository;
 
     @Autowired
     public VentaService(VentaRepository ventaRepository) {
@@ -24,5 +23,4 @@ public class VentaService {
     public void saveVenta(Venta venta) throws DataAccessException {
         ventaRepository.save(venta);
     }
-  
 }

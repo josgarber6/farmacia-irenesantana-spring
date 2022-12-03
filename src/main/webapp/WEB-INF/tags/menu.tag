@@ -1,6 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="farmacia" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <!--  >%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%-->
@@ -22,29 +22,49 @@
 		<div class="navbar-collapse collapse" id="main-navbar">
 			<ul class="nav navbar-nav">
 
-				<petclinic:menuItem active="${name eq 'home'}" url="/"
+				<farmacia:menuItem active="${name eq 'home'}" url="/"
 					title="home page">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Inicio</span>
+				</farmacia:menuItem>
+
+				<farmacia:menuItem active="${name eq 'venta'}" url="/venta"
+					title="venta">
+					<span class="	glyphicon glyphicon-tag" aria-hidden="true"></span>
+					<span>Venta</span>
+				</farmacia:menuItem>
+
+				<farmacia:menuItem active="${name eq 'articulos'}" url="/articulos"
+					title="articulos">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Home</span>
-				</petclinic:menuItem>
+				</farmacia:menuItem>
 
-				<petclinic:menuItem active="${name eq 'owners'}" url="/owners/find"
-					title="find owners">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Find owners</span>
-				</petclinic:menuItem>
+				<farmacia:menuItem active="${name eq 'pedido'}" url="/pedido"
+					title="pedido">
+					<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+					<span>Pedido</span>
+				</farmacia:menuItem>
 
-				<petclinic:menuItem active="${name eq 'vets'}" url="/vets"
-					title="veterinarians">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Veterinarians</span>
-				</petclinic:menuItem>
+				<farmacia:menuItem active="${name eq 'caja'}" url="/caja"
+					title="pedido">
+					<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+					<span>Pedido</span>
+				</farmacia:menuItem>
+				
+				<farmacia:menuItem active="${name eq 'clientes'}" url="/clientes"
+					title="clientes">
+					<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+					<span>Clientes</span>
+				</farmacia:menuItem>
 
-				<petclinic:menuItem active="${name eq 'error'}" url="/oups"
-					title="trigger a RuntimeException to see how it is handled">
-					<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-					<span>Error</span>
-				</petclinic:menuItem>
+				<farmacia:menuItem active="${name eq 'control'}" url="/controlhorario"
+					title="control">
+					<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					<span>Control Horario</span>
+				</farmacia:menuItem>
+
+
 
 			</ul>
 
@@ -58,7 +78,7 @@
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>ï¿½
 							<strong><sec:authentication property="name" /></strong> <span
 							class="glyphicon glyphicon-chevron-down"></span>
 					</a>

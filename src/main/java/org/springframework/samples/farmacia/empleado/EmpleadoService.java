@@ -18,9 +18,16 @@ public class EmpleadoService {
         this.empleadoRepository = empleadoRepository;
     }
     
+    @Transactional(readOnly = true)
     public Optional<Empleado> findEmpleado(String name) {
         return empleadoRepository.findById(name);
     }
+
+    @Transactional(readOnly = true)
+    public Empleado getEmpleadoByUsername(String username) {
+        return empleadoRepository.findByUsername(username);
+    }
+
 
     @Transactional
     public void saveEmpleado(Empleado cliente) throws DataAccessException {
