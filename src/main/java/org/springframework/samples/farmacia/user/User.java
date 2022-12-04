@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.samples.farmacia.empleado.Authorities;
-
 import lombok.Getter;
 import lombok.Setter;
 

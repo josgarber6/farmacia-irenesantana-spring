@@ -21,7 +21,7 @@
                     minutes = myDate.getMinutes();
                     if (hours < 10) hours = 0 + hours;
                     if (minutes < 10)
-                    $("#HoraActual").text(hours+ ":" +minutes);
+                    $("#HoraActual").text(hours+ ": " +minutes);
                     setTimeout("showTime()", 1000);
                 }
             </script>

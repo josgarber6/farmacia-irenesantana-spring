@@ -1,4 +1,4 @@
-package org.springframework.samples.farmacia.empleado;
+package org.springframework.samples.farmacia.user;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -18,8 +18,8 @@ import lombok.Setter;
 public class Authorities extends BaseEntity{
 	
 	@ManyToOne
-	@JoinColumn(name = "nombre")
-	Empleado empleado;
+	@JoinColumn(name = "username")
+	User user;
 	
 	@Size(min = 3, max = 50)
 	String authority;

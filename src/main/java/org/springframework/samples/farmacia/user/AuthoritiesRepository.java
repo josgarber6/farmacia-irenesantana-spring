@@ -1,4 +1,4 @@
-package org.springframework.samples.farmacia.empleado;
+package org.springframework.samples.farmacia.user;
 
 import org.springframework.data.repository.CrudRepository;
 

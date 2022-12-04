@@ -47,7 +47,7 @@ public class ControlHorarioController {
       return CREATE_CONTROL;
     } else {
       ControlHorario newControlHorario = new ControlHorario();
-      newControlHorario.setEmpleadoId(e.getId());
+      newControlHorario.setEmpleado(e);
       newControlHorario.setHora(LocalTime.now());
       newControlHorario.setHorarioFichaAnterior(new Date());
       newControlHorario.setTipo(ch.getTipo());

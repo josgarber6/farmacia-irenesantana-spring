@@ -3,6 +3,8 @@ package org.springframework.samples.farmacia.empleado;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,6 +23,8 @@ import lombok.Setter;
 public class Empleado extends BaseEntity {
 
   private String nombre;
+
+  @Enumerated(EnumType.STRING)
   private Rol rol;
 
   @Column(name = "num_vendedor")

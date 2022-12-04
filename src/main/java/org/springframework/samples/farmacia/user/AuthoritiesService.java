@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.farmacia.empleado;
+package org.springframework.samples.farmacia.user;
 
 
 import java.util.Optional;
@@ -33,12 +33,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class AuthoritiesService {
 
 	private AuthoritiesRepository authoritiesRepository;
-	private EmpleadoService empleadoService;
+	private UserService userService;
 
 	@Autowired
-	public AuthoritiesService(AuthoritiesRepository authoritiesRepository,EmpleadoService empleadoService) {
+	public AuthoritiesService(AuthoritiesRepository authoritiesRepository,UserService userService) {
 		this.authoritiesRepository = authoritiesRepository;
-		this.empleadoService = empleadoService;
+		this.userService = userService;
 	}
 
 	@Transactional
@@ -49,14 +49,14 @@ public class AuthoritiesService {
 	@Transactional
 	public void saveAuthorities(String nombre, String role) throws DataAccessException {
 		Authorities authority = new Authorities();
-		Optional<Empleado> empleado = empleadoService.findEmpleado(nombre);
-		if(empleado.isPresent()) {
-			authority.setEmpleado(empleado.get());
+		Optional<User> user = userService.findUser(nombre);
+		if(user.isPresent()) {
+			authority.setUser(user.get());
 			authority.setAuthority(role);
 			//user.get().getAuthorities().add(authority);
 			authoritiesRepository.save(authority);
 		}else
-			throw new DataAccessException("Empleado '"+nombre+"' not found!") {};
+			throw new DataAccessException("User '"+nombre+"' not found!") {};
 	}
 
 
