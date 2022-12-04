@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="farmacia" tagdir="/WEB-INF/tags" %>
 
-<farmacia:layout pageName="control">
+<farmacia:layout pageName="controles">
     <h2>Control Horario</h2>
 
     <table id="controlTable" class="table table-striped">

@@ -6,31 +6,40 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="farmacia" tagdir="/WEB-INF/tags" %>
 
-<farmacia:layout pageName="controles">
-    <h2>
-        <c:if test="${control['new']}">New </c:if> Owner
-    </h2>
-    <form:form modelAttribute="owner" class="form-horizontal" id="add-owner-form">
-        <div class="form-group has-feedback">
-            <petclinic:inputField label="First Name" name="firstName"/>
-            <petclinic:inputField label="Last Name" name="lastName"/>
-            <petclinic:inputField label="Address" name="address"/>
-            <petclinic:inputField label="City" name="city"/>
-            <petclinic:inputField label="Telephone" name="telephone"/>
-            <petclinic:inputField label="Username" name="user.username"/>
-            <petclinic:inputField label="Password" name="user.password"/>
+<farmacia:layout pageName="control">
+    <div class="row">
+        <div class="col-md-12">
+            <spring:url value="/resources/images/logoFarmacia.png" htmlEscape="true" var="logoImage"/>
+            <img class="img-responsive" src="${logoImage}"/>
         </div>
+    </div>
+    <h2 id="HoraActual">Hora Actual:</h2>
+            <script type="text/javascript">
+                function showTime() {
+                    myDate = new Date();
+                    hours = myDate.getHours();
+                    minutes = myDate.getMinutes();
+                    if (hours < 10) hours = 0 + hours;
+                    if (minutes < 10)
+                    $("#HoraActual").text(hours+ ":" +minutes);
+                    setTimeout("showTime()", 1000);
+                }
+            </script>
+    <h2>Fecha y hora del fichaje anterior: </h2>
+    <h2>${control.horarioFichaAnterior}</h2>
+    
+    <form:form modelAttribute="controlHorario" class="form-horizontal" id="add-controlHorario-form">
+        <div class="control-group">
+            <farmacia:selectField name="empleadoId" label="Número de vendedor" names="${empleado_ids}" size="5"/>
+        </div>
+        <div class="control-group">
+            <farmacia:selectField name="tipo" label="Tipo " names="${tipos}" size="5"/>
+        </div>
+        <farmacia:inputField label="Clave de empleado" name="user.password"/>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <c:choose>
-                    <c:when test="${owner['new']}">
-                        <button class="btn btn-default" type="submit">Add Owner</button>
-                    </c:when>
-                    <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Owner</button>
-                    </c:otherwise>
-                </c:choose>
+               <button class="btn btn-default" type="submit">Acceder</button>
             </div>
         </div>
     </form:form>
-</petclinic:layout>
+</farmacia:layout>
