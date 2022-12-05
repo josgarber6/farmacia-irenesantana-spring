@@ -31,7 +31,7 @@ public class ControlHorario extends BaseEntity {
   @Enumerated(EnumType.STRING)
   private Tipo tipo;
 
-  @ManyToOne(cascade = {CascadeType.ALL})
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "empleado_id", referencedColumnName = "id")
   private Empleado empleado;
   

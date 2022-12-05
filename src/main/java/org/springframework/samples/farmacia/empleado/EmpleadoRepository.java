@@ -12,7 +12,7 @@ public interface EmpleadoRepository extends CrudRepository<Empleado, String> {
     @Query("SELECT e FROM Empleado e WHERE e.nombre = :nombre")
     public Empleado findByName(@Param("nombre") String nombre);
 
-    @Query("SELECT e FROM Empleado e WHERE e.username = :username")
+    @Query("SELECT e FROM Empleado e WHERE e.user.username = :username")
     public Empleado findByUsername(@Param("username") String username);
 
   

@@ -9,16 +9,6 @@
 
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
-		<div class="navbar-header">
-			<a class="navbar-brand"
-				href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#main-navbar">
-				<span class="sr-only"><os-p>Toggle navigation</os-p></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-		</div>
 		<div class="navbar-collapse collapse" id="main-navbar">
 			<ul class="nav navbar-nav">
 
@@ -36,8 +26,8 @@
 
 				<farmacia:menuItem active="${name eq 'articulos'}" url="/articulos"
 					title="articulos">
-					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-					<span>Home</span>
+					<img src="<spring:url value='/resources/images/pill.ico'/>"width="20" height="20"/>
+					<span>Articulos</span>
 				</farmacia:menuItem>
 
 				<farmacia:menuItem active="${name eq 'pedido'}" url="/pedido"
@@ -47,9 +37,9 @@
 				</farmacia:menuItem>
 
 				<farmacia:menuItem active="${name eq 'caja'}" url="/caja"
-					title="pedido">
-					<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-					<span>Pedido</span>
+					title="caja">
+					<span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
+					<span>Caja</span>
 				</farmacia:menuItem>
 				
 				<farmacia:menuItem active="${name eq 'clientes'}" url="/clientes"
@@ -58,10 +48,20 @@
 					<span>Clientes</span>
 				</farmacia:menuItem>
 
-				<farmacia:menuItem active="${name eq 'control'}" url="/controlhorario"
+				<farmacia:menuItem active="${name eq 'control'}" url="/controlhorario/" dropdown="${true}"
 					title="control">
 					<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 					<span>Control Horario</span>
+
+					<ul class="dropdown-menu">
+						<li>
+							<a href="<c:url value="/controlhorario/new"/>">Nuevo registro</a>
+						</li>
+						<li>
+							<a href="<c:url value="/controlhorario"/>">Ver registros</a>
+						</li>
+					</ul>
+
 				</farmacia:menuItem>
 
 
@@ -77,8 +77,8 @@
 					<li><a href="<c:url value="/users/new" />">Register</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>�
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
 							<strong><sec:authentication property="name" /></strong> <span
 							class="glyphicon glyphicon-chevron-down"></span>
 					</a>
