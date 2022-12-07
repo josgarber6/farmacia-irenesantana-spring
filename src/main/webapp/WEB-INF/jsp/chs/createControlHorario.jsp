@@ -9,7 +9,7 @@
 <farmacia:layout pageName="control">
     <div class="row">
         <div class="col-md-12">
-            <spring:url value="/resources/images/logoFarmacia.png" htmlEscape="true" var="logoImage"/>
+            <spring:url value="/resources/images/farmacia-irene-santana.png" htmlEscape="true" var="logoImage"/>
             <img class="img-responsive" src="${logoImage}"/>
         </div>
     </div>
