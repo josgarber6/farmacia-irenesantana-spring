@@ -1,5 +1,6 @@
 package org.springframework.samples.farmacia.empleado;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,16 @@ public class EmpleadoService {
     @Transactional(readOnly = true)
     public Empleado getEmpleadoByUsername(String username) {
         return empleadoRepository.findByUsername(username);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Integer> findAllNumVendedor() {
+        return empleadoRepository.findAll().stream().map(x -> x.getId()).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public String findClaveById(Integer id) {
+        return empleadoRepository.findById(String.valueOf(id)).get().getClave();
     }
 
 

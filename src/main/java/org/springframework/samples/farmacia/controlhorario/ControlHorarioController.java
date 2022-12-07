@@ -8,24 +8,25 @@ import javax.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.farmacia.empleado.Empleado;
-import org.springframework.samples.farmacia.util.AuthenticationService;
+import org.springframework.samples.farmacia.empleado.EmpleadoService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+@Controller
 public class ControlHorarioController {
   
   private ControlHorarioService controlHorarioService;
-  private AuthenticationService authService;
+  private EmpleadoService empleadoService;
 
-  public final static String CREATE_CONTROL = "controlhorario/createControlHorario";
+  public static final String CREATE_CONTROL = "chs/createControlHorario";
 
   @Autowired
-  public ControlHorarioController(ControlHorarioService cs, AuthenticationService as) {
+  public ControlHorarioController(ControlHorarioService cs, EmpleadoService empleadoService) {
     this.controlHorarioService = cs;
-    this.authService = as;
+    this.empleadoService = empleadoService;
   }
 
   @GetMapping(value="/controlhorario")
@@ -39,15 +40,18 @@ public class ControlHorarioController {
     model.put("control", new ControlHorario());
     return CREATE_CONTROL;
   }
-
+  
   @PostMapping(value = "/controlhorario/new")
   public String saveControlHorario(@Valid ControlHorario ch, BindingResult br, ModelMap model) {
-    Empleado e = authService.getEmpleado();
     if (br.hasErrors()){
+      model.put("control", ch);
+      model.put("num_vendedores", empleadoService.findAllNumVendedor());
       return CREATE_CONTROL;
     } else {
       ControlHorario newControlHorario = new ControlHorario();
-      newControlHorario.setEmpleado(e);
+      Empleado chEmpleado = ch.getEmpleado();
+      // if (chEmpleado.getClave() == empleadoService.)
+      newControlHorario.setEmpleado(ch.getEmpleado());
       newControlHorario.setHora(LocalTime.now());
       newControlHorario.setHorarioFichaAnterior(new Date());
       newControlHorario.setTipo(ch.getTipo());

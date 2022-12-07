@@ -1,5 +1,7 @@
 package org.springframework.samples.farmacia.empleado;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmpleadoRepository extends CrudRepository<Empleado, String> {
+
+    public List<Empleado> findAll();
 
     @Query("SELECT e FROM Empleado e WHERE e.nombre = :nombre")
     public Empleado findByName(@Param("nombre") String nombre);

@@ -36,7 +36,7 @@ public class AuthoritiesService {
 	private UserService userService;
 
 	@Autowired
-	public AuthoritiesService(AuthoritiesRepository authoritiesRepository,UserService userService) {
+	public AuthoritiesService(AuthoritiesRepository authoritiesRepository, UserService userService) {
 		this.authoritiesRepository = authoritiesRepository;
 		this.userService = userService;
 	}
@@ -53,7 +53,7 @@ public class AuthoritiesService {
 		if(user.isPresent()) {
 			authority.setUser(user.get());
 			authority.setAuthority(role);
-			//user.get().getAuthorities().add(authority);
+			//empleado.get().getAuthorities().add(authority);
 			authoritiesRepository.save(authority);
 		}else
 			throw new DataAccessException("User '"+nombre+"' not found!") {};

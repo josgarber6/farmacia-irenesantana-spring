@@ -28,14 +28,14 @@
     <h2>Fecha y hora del fichaje anterior: </h2>
     <h2>${control.horarioFichaAnterior}</h2>
     
-    <form:form modelAttribute="controlHorario" class="form-horizontal" id="add-controlHorario-form">
+    <form:form modelAttribute="control" class="form-horizontal" id="add-controlHorario-form">
         <div class="control-group">
-            <farmacia:selectField name="empleadoId" label="Número de vendedor" names="${empleado_ids}" size="5"/>
+            <farmacia:selectField name="ids" label="Número de vendedor" names="${ids}" size="5"/>
         </div>
         <div class="control-group">
             <farmacia:selectField name="tipo" label="Tipo " names="${tipos}" size="5"/>
         </div>
-        <farmacia:inputField label="Clave de empleado" name="user.password"/>
+        <farmacia:inputField label="Clave de empleado" name="${clave}"/>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                <button class="btn btn-default" type="submit">Acceder</button>
