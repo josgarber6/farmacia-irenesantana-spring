@@ -14,3 +14,6 @@ INSERT INTO empleados(id,nombre,rol,username,clave) VALUES (5,'Clara','TECNICO',
 INSERT INTO empleados(id,nombre,rol,username,clave) VALUES (6,'Pablo','AUXILIAR',null,'pab');
 
 -- INSERT INTO control_horario(id,horario_ficha_anterior,hora,tipo,empleado_id) VALUES (1,"8:30")
+
+INSERT INTO tipos VALUES (1, 'entrada');
+INSERT INTO tipos VALUES (2, 'salida');

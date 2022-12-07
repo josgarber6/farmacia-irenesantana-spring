@@ -28,7 +28,8 @@ public class ControlHorario extends BaseEntity {
   private Date horarioFichaAnterior;
   private LocalTime hora;
 
-  @Enumerated(EnumType.STRING)
+  @ManyToOne
+  @JoinColumn(name =  "tipo_id")
   private Tipo tipo;
 
   @ManyToOne(cascade = CascadeType.ALL)

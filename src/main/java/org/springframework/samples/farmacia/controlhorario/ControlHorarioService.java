@@ -1,5 +1,6 @@
 package org.springframework.samples.farmacia.controlhorario;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class ControlHorarioService {
     @Transactional(readOnly = true)
     public List<ControlHorario> findByEmpleadoId (int id) {
         return controlHorarioRepository.findByEmpleadoId(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Collection<Tipo> findByControlHorarioTypes() throws DataAccessException {
+        return controlHorarioRepository.findBtControlHorarioType();
     }
 
     @Transactional

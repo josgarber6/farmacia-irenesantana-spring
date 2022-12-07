@@ -1,6 +1,7 @@
 package org.springframework.samples.farmacia.controlhorario;
 
 import java.time.LocalTime;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.validation.Valid;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -28,6 +30,11 @@ public class ControlHorarioController {
     this.controlHorarioService = cs;
     this.empleadoService = empleadoService;
   }
+
+  @ModelAttribute("tipos")
+	public Collection<Tipo> populateControlHorarioTypes() {
+		return this.controlHorarioService.findByControlHorarioTypes();
+	}
 
   @GetMapping(value="/controlhorario")
   public String getControlHorario(ModelMap model) {
