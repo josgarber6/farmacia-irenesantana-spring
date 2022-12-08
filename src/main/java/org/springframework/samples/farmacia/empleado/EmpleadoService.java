@@ -20,8 +20,8 @@ public class EmpleadoService {
     }
     
     @Transactional(readOnly = true)
-    public Optional<Empleado> findEmpleado(String name) {
-        return empleadoRepository.findById(name);
+    public Optional<Empleado> findById(Integer id) {
+        return empleadoRepository.findById(id);
     }
 
     @Transactional(readOnly = true)

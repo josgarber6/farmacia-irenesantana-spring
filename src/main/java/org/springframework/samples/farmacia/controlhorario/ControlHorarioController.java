@@ -3,6 +3,7 @@ package org.springframework.samples.farmacia.controlhorario;
 import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -51,21 +52,33 @@ public class ControlHorarioController {
   @PostMapping(value = "/controlhorario/new")
   public String saveControlHorario(@Valid ControlHorario ch, BindingResult br, ModelMap model) {
     if (br.hasErrors()){
-      model.put("control", ch);
-      model.put("num_vendedores", empleadoService.findAllNumVendedor());
       return CREATE_CONTROL;
     } else {
-      ControlHorario newControlHorario = new ControlHorario();
-      Empleado chEmpleado = ch.getEmpleado();
-      // if (chEmpleado.getClave() == empleadoService.)
-      newControlHorario.setEmpleado(ch.getEmpleado());
-      newControlHorario.setHora(LocalTime.now());
-      newControlHorario.setHorarioFichaAnterior(new Date());
-      newControlHorario.setTipo(ch.getTipo());
-      BeanUtils.copyProperties(ch, newControlHorario, "id");
-      this.controlHorarioService.saveControlHorario(newControlHorario);
-      model.put("message", "Control Horario creado correctamente.");
+      
+      Optional<Empleado> dbEmpleado = empleadoService.findById(ch.getEmpleado().getId());
+      
+      if (dbEmpleado.isPresent()) {
+        String claveForm = ch.getEmpleado().getClave();
+        String dbClave = dbEmpleado.get().getClave();
+        if (!claveForm.equals(dbClave)) {
+          model.put("message", "La clave introducida no es correcta, por favor vuelve a intentarlo");
+          model.put("messageType", "info");
+          model.put("control", new ControlHorario());
+          return CREATE_CONTROL;
+        } else {
+          ControlHorario newControlHorario = new ControlHorario();
+
+          newControlHorario.setEmpleado(dbEmpleado.get());
+          newControlHorario.setHora(LocalTime.now());
+          newControlHorario.setHorarioFichaAnterior(new Date());
+          newControlHorario.setTipo(ch.getTipo());
+          this.controlHorarioService.saveControlHorario(newControlHorario);
+          model.put("message", "Control Horario creado correctamente.");
+          return "redirect:/";
+        }
+      }
       return "redirect:/";
+
     }
   }
   

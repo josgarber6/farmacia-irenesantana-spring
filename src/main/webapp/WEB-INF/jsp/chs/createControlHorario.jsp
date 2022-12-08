@@ -8,30 +8,49 @@
 
 <farmacia:layout pageName="control">
     <div class="row">
+        <c:if test="${message != null}">
+            <div class="alert alert-${messageType}">
+                <c:out value="${message}"></c:out>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+            </div>
+        </c:if>
         <div class="col-md-12">
             <spring:url value="/resources/images/farmacia-irene-santana.png" htmlEscape="true" var="logoImage"/>
             <img class="img-responsive" src="${logoImage}"/>
         </div>
     </div>
-    <h2 id="HoraActual">Hora Actual:</h2>
-            <script type="text/javascript">
-                function showTime() {
-                    myDate = new Date();
-                    hours = myDate.getHours();
-                    minutes = myDate.getMinutes();
-                    if (hours < 10) hours = 0 + hours;
-                    if (minutes < 10)
-                    $("#HoraActual").text(hours+ ": " +minutes);
-                    setTimeout("showTime()", 1000);
-                }
-            </script>
+    <h2 id="horaActual">Hora Actual:</h2>
+    <script type="text/javascript">
+        function showTime() {
+            myDate = new Date();
+            hours = myDate.getHours();
+            minutes = myDate.getMinutes();
+            if (hours < 10) hours = 0 + hours;
+            if (minutes < 10)
+            $("#HoraActual").text(hours+ ": " +minutes);
+            setTimeout("showTime()", 1000);
+        }
+        </script>
     <h2>Fecha y hora del fichaje anterior: </h2>
     <h2>${control.horarioFichaAnterior}</h2>
     
-    <form:form modelAttribute="control" class="form-horizontal" id="add-controlHorario-form">
+    <form:form modelAttribute="control">
+        <div class="control-group">
+            <form:label path="empleado.id" style="padding-right: 62px;">Numero de vendedor: </form:label>
+            <form:input type="number" path="empleado.id"/>
+        </div>
+        
         
         <div class="control-group">
-            <farmacia:selectField name="tipo" label="Tipo " names="${tipos}" size="1"/>
+            <form:label path="tipo" style="padding-left: 112px; padding-right: 62px;">Tipo: </form:label>
+            <form:select path="tipo">
+                <form:options items="${tipos}" size="1"/>
+            </form:select>
+        </div>
+
+        <div class="control-group">
+            <form:label path="empleado.clave" style="padding-left: 105px; padding-right: 62px;">Clave: </form:label>
+            <form:input type="password" path="empleado.clave"/>
         </div>
        
         <div class="form-group">

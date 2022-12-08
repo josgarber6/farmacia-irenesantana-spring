@@ -6,8 +6,6 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -35,5 +33,7 @@ public class ControlHorario extends BaseEntity {
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "empleado_id", referencedColumnName = "id")
   private Empleado empleado;
-  
+
+  private String numVendedor;
+
 }
