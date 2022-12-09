@@ -1,5 +1,7 @@
 package org.springframework.samples.farmacia.articulo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -16,13 +18,18 @@ public class ArticuloService {
     }
 
     @Transactional(readOnly = true)
+    public List<Articulo> findAll() {
+        return articuloRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
     public Articulo findByArticuloId(int id) throws DataAccessException {
         return articuloRepository.findById(id).orElse(null);
     }
 
     @Transactional
-    public void saveArticulo(Articulo articulo) throws DataAccessException {
-        articuloRepository.save(articulo);
+    public Articulo saveArticulo(Articulo articulo) throws DataAccessException {
+        return articuloRepository.save(articulo);
     }
 
     @Transactional

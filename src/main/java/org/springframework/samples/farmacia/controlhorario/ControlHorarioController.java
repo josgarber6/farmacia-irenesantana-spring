@@ -40,7 +40,7 @@ public class ControlHorarioController {
   @GetMapping(value="/controlhorario")
   public String getControlHorario(ModelMap model) {
     model.put("controles", controlHorarioService.findAll());
-    return "controlhorario/ControlListing";
+    return "chs/ControlListing";
   }
 
   @GetMapping(value = "/controlhorario/new")
@@ -52,6 +52,8 @@ public class ControlHorarioController {
   @PostMapping(value = "/controlhorario/new")
   public String saveControlHorario(@Valid ControlHorario ch, BindingResult br, ModelMap model) {
     if (br.hasErrors()){
+      model.put("message", "Datos incorrectos");
+      model.put("messageType", "info");
       return CREATE_CONTROL;
     } else {
       

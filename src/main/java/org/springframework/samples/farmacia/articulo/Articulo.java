@@ -1,14 +1,15 @@
 package org.springframework.samples.farmacia.articulo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.farmacia.model.BaseEntity;
 
 import lombok.Getter;
@@ -27,15 +28,18 @@ public class Articulo extends BaseEntity {
   @Column(name = "codigo_nacional")
   private String codigoNacional;
 
-  @NotNull
-  private Date caducidad;
+  @DateTimeFormat(pattern = "yyyy/MM/dd")
+  private LocalDate caducidad;
 
   @NotNull
-  private Integer existencia;
+  @Min(0)
+  private Integer existencias;
   
   @NotNull
+  @Min(0)
   private String lote;
 
+  @Min(0)
   private Integer tenencia;
 
   @Min(0)
@@ -49,8 +53,7 @@ public class Articulo extends BaseEntity {
 
   private String imagen;
 
-  @Min(0)
-  @Max(50)
+  @Size(min=1, max = 500)
   private String observacion;
   
 }

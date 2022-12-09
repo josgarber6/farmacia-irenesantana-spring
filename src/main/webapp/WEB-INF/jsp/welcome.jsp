@@ -1,21 +1,15 @@
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="farmacia" tagdir="/WEB-INF/tags" %>
 <!-- %@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %-->  
 
-<petclinic:layout pageName="home">
+<farmacia:layout pageName="home">
     <h2>Farmacia Irene Santana</h2>
     <div class="row">
-        <c:if test="${message != null}">
-		<div class="alert alert-${messageType}">
-			<c:out value="${message}"></c:out>
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
-		</div>
-		</c:if>
         <div class="col-md-12">
             <spring:url value="/resources/images/farmacia-irene-santana.png" htmlEscape="true" var="petsImage"/>
             <img class="img-responsive" src="${petsImage}"/>
         </div>
     </div>
-</petclinic:layout>
+</farmacia:layout>
