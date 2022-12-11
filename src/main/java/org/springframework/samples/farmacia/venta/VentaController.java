@@ -57,7 +57,7 @@ public String getVentaDetail(@PathVariable("id") Integer id, ModelMap model) {
       }
   }
 
-  /*@GetMapping("/venta/{id}/edit")
+  @GetMapping("/ventas/{id}/edit")
   public String editVenta(@PathVariable("id") Integer id, ModelMap model) {
     Venta venta = ventaService.findByVentaId(id);
     if (venta != null) {
@@ -70,7 +70,7 @@ public String getVentaDetail(@PathVariable("id") Integer id, ModelMap model) {
     }
   }
 
-  @PostMapping("/articulos/{id}/edit")
+  @PostMapping("/ventas/{id}/edit")
   public String editVenta(@PathVariable("id") Integer id, @Valid Venta venta, BindingResult br, ModelMap model) {
     if (br.hasErrors()) {
       return CREATE_VENTA;
@@ -87,5 +87,5 @@ public String getVentaDetail(@PathVariable("id") Integer id, ModelMap model) {
         return listAllVentas(model);
       }
     }
-  }*/
+  }
 }

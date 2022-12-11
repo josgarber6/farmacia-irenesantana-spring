@@ -1,8 +1,6 @@
 package org.springframework.samples.farmacia.venta;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -30,15 +28,10 @@ public class Venta extends BaseEntity {
   @DateTimeFormat(pattern = "yyyy/MM/dd")
   private LocalDate fecha;
 
-  
-
   @Column(name = "tipo_pago")
   @Enumerated(EnumType.STRING)
   private TipoPago tipoPago;
 
-  public Double getPrecioTotal() {
-    return null;
-  }
   @Column(name = "precio_total")
   private Double precioTotal;
 

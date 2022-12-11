@@ -28,7 +28,7 @@
                   <c:out value="${venta.tipoPago}"/>
                 </td>
                 <td>
-                  <c:out value="${articulo.fecha}" />
+                  <c:out value="${venta.fecha}" />
                   <farmacia:localDate date="${venta.fecha}" pattern="dd/MM/yyyy"/>
                 </td>
                 <td>

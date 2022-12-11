@@ -10,10 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class VentaService {
   private VentaRepository ventaRepository;
+  private LineaVentaRepository lineaVentaRepository;
 
     @Autowired
-    public VentaService(VentaRepository ventaRepository) {
+    public VentaService(VentaRepository ventaRepository, LineaVentaRepository lr) {
         this.ventaRepository = ventaRepository;
+        this.lineaVentaRepository = lr;
     }
     @Transactional(readOnly = true)
     public List<Venta> findAll() {
@@ -34,4 +36,18 @@ public class VentaService {
     public void deleteVenta(int id) throws DataAccessException {
         ventaRepository.deleteById(id);
     }
+
+    @Transactional
+    public Double precioTotal(int id) throws DataAccessException {
+        List<LineaVenta> ls = lineaVentaRepository.findByVentaId(id);
+        Double precio = 0.0;
+        for (LineaVenta lv: ls) {
+            precio += lv.getPrecio() * lv.getCantidad();
+        }
+        Venta v = ventaRepository.findById(id).get();
+        v.setPrecioTotal(precio);
+        ventaRepository.save(v);
+        return precio;
+    }
+
 }
