@@ -18,7 +18,7 @@
 					<span>Inicio</span>
 				</farmacia:menuItem>
 
-				<farmacia:menuItem active="${name eq 'venta'}" url="/venta"
+				<farmacia:menuItem active="${name eq 'ventas'}" url="/ventas"
 					title="venta">
 					<span class="	glyphicon glyphicon-tag" aria-hidden="true"></span>
 					<span>Venta</span>

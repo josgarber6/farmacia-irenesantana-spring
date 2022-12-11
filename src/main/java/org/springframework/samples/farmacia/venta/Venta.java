@@ -1,13 +1,21 @@
 package org.springframework.samples.farmacia.venta;
 
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.samples.farmacia.articulo.Articulo;
 import org.springframework.samples.farmacia.model.BaseEntity;
 
 import lombok.Setter;
@@ -19,7 +27,10 @@ import lombok.Getter;
 @Setter
 public class Venta extends BaseEntity {
 
-  private Date fecha;
+  @DateTimeFormat(pattern = "yyyy/MM/dd")
+  private LocalDate fecha;
+
+  
 
   @Column(name = "tipo_pago")
   @Enumerated(EnumType.STRING)
@@ -28,5 +39,11 @@ public class Venta extends BaseEntity {
   public Double getPrecioTotal() {
     return null;
   }
+  @Column(name = "precio_total")
+  private Double precioTotal;
+
+  @ManyToMany
+	@JoinTable(name = "venta_articulos", joinColumns = @JoinColumn(name = "venta_id"), inverseJoinColumns = @JoinColumn(name = "articulo_id"))
+	private Set<Articulo> articulos;
 
 }
