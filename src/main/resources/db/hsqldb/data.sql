@@ -24,12 +24,12 @@ VALUES (1,'Fisiocrem crema 50 g', '356723', '2023-06-24', '7', 2, 4, 6, 8.95, FA
 (5, 'Agiolax granulado 250 g', '960427', '2023-05-21', '2', 1, 1, 1, 11.90, TRUE, 20, null, 'jajajajjajjjajaja'),
 (6, 'Aldoleo 50 mg', '703074', '2024-02-23', '11', 3, 6, 5, 4.09, FALSE, 5, null, 'merio');
 
-INSERT INTO ventas(id,fecha,tipo_pago,precio_total) VALUES (1,'2022-11-07','EFECTIVO',29.3);
-INSERT INTO ventas(id,fecha,tipo_pago,precio_total) VALUES (2,'2022-11-11','TARJETA',13.6);
+INSERT INTO ventas(id,fecha,tipo_pago) VALUES (1,'2022-11-07','EFECTIVO');
+INSERT INTO ventas(id,fecha,tipo_pago) VALUES (2,'2022-11-11','TARJETA');
 
-INSERT INTO venta_articulos(venta_id,articulo_id) VALUES (1,1);
-INSERT INTO venta_articulos(venta_id,articulo_id) VALUES (1,2);
-INSERT INTO venta_articulos(venta_id,articulo_id) VALUES (1,4);
-INSERT INTO venta_articulos(venta_id,articulo_id) VALUES (2,5);
-INSERT INTO venta_articulos(venta_id,articulo_id) VALUES (2,6);
+INSERT INTO linea_venta(id,cantidad,precio,venta_id,articulo_id) VALUES (1,3,0.0,1,1);
+INSERT INTO linea_venta(id,cantidad,precio,venta_id,articulo_id) VALUES (2,5,0.0,1,2);
+INSERT INTO linea_venta(id,cantidad,precio,venta_id,articulo_id) VALUES (3,1,0.0,1,4);
+INSERT INTO linea_venta(id,cantidad,precio,venta_id,articulo_id) VALUES (4,2,0.0,2,5);
+INSERT INTO linea_venta(id,cantidad,precio,venta_id,articulo_id) VALUES (5,4,0.0,2,6);
 

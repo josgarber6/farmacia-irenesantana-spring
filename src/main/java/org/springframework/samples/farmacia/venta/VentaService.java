@@ -49,5 +49,15 @@ public class VentaService {
         ventaRepository.save(v);
         return precio;
     }
+    @Transactional
+    public Double precioArticulo(int id) throws DataAccessException {
+        LineaVenta ls = lineaVentaRepository.findById(id).get();
+        Double precio = 0.0;
+        
+        precio = ls.getArticulo().getPvp() * ls.getCantidad();
+        ls.setPrecio(precio);
+        lineaVentaRepository.save(ls);
+        return precio;
+    }
 
 }

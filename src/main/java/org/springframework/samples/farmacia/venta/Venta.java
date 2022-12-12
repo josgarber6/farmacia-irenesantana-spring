@@ -1,6 +1,7 @@
 package org.springframework.samples.farmacia.venta;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
@@ -38,5 +40,8 @@ public class Venta extends BaseEntity {
   @ManyToMany
 	@JoinTable(name = "venta_articulos", joinColumns = @JoinColumn(name = "venta_id"), inverseJoinColumns = @JoinColumn(name = "articulo_id"))
 	private Set<Articulo> articulos;
+
+  @OneToMany(mappedBy="venta")
+    private Collection<LineaVenta> lineasVenta;
 
 }

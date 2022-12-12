@@ -1,5 +1,7 @@
 package org.springframework.samples.farmacia.venta;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -27,6 +29,12 @@ public class VentaController {
   
 @GetMapping("/ventas")
 public String listAllVentas(ModelMap model) {
+  List<Venta> ventas = ventaService.findAll();
+  for(Venta venta: ventas) {
+    Integer id = venta.getId();
+    Double precioTotal = ventaService.precioTotal(id);
+    venta.setPrecioTotal(precioTotal);
+  }
   model.put("ventas", ventaService.findAll());
   return LIST_VENTAS;
 }
