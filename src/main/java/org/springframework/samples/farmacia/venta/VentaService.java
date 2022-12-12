@@ -38,26 +38,25 @@ public class VentaService {
     }
 
     @Transactional
+    public Double precioArticulo(int id) throws DataAccessException {
+        LineaVenta ls = lineaVentaRepository.findById(id).get();
+        Double precio = ls.getArticulo().getPvp() * ls.getCantidad();
+        ls.setPrecio(precio);
+        lineaVentaRepository.save(ls);
+        return precio;
+    }
+    
+    @Transactional
     public Double precioTotal(int id) throws DataAccessException {
         List<LineaVenta> ls = lineaVentaRepository.findByVentaId(id);
         Double precio = 0.0;
         for (LineaVenta lv: ls) {
-            precio += lv.getPrecio() * lv.getCantidad();
+            precio += precioArticulo(lv.getId());
         }
         Venta v = ventaRepository.findById(id).get();
         v.setPrecioTotal(precio);
         ventaRepository.save(v);
         return precio;
     }
-    @Transactional
-    public Double precioArticulo(int id) throws DataAccessException {
-        LineaVenta ls = lineaVentaRepository.findById(id).get();
-        Double precio = 0.0;
-        
-        precio = ls.getArticulo().getPvp() * ls.getCantidad();
-        ls.setPrecio(precio);
-        lineaVentaRepository.save(ls);
-        return precio;
-    }
-
+    
 }

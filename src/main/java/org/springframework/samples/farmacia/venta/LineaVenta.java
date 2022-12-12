@@ -23,7 +23,6 @@ public class LineaVenta extends BaseEntity {
   @Min(0)
   private Integer cantidad;
 
-  @NotNull
   @Min(0)
   private Double precio;
 
