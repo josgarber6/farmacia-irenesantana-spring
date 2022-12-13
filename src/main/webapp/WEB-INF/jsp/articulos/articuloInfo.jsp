@@ -7,8 +7,7 @@
 
 <farmacia:layout pageName="detallesArticulo">
     <h2>Detalles del articulo</h2>
-    <a href='<spring:url value="/articulos/${articulo.id}/edit" htmlEscape="true" />'><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-    <div style="width: fit-content; height: fit-content;">
+    <div style="width: auto; height: auto;">
     <table id="articuloTable1" class="table table-striped">
         <thead>
           <tr>

@@ -33,3 +33,9 @@ INSERT INTO linea_venta(id,cantidad,precio,venta_id,articulo_id) VALUES (3,1,0.0
 INSERT INTO linea_venta(id,cantidad,precio,venta_id,articulo_id) VALUES (4,2,0.0,2,5);
 INSERT INTO linea_venta(id,cantidad,precio,venta_id,articulo_id) VALUES (5,4,0.0,2,6);
 
+INSERT INTO clientes(id,nombre,apellido,direccion,firma_electronica,telefono,dni,observacion) VALUES (1,'Domingo','Valera','Calle Amaya 17 1º A', 'domingovalera.odf', '610 900 575', '42162601J', 'Alergico a los insecticidas'),
+(2,'Eugenia', 'Tejada','Travesia Natalia 790 9º A','eugeniatejada.odf','610 900 575', '49823348N', 'Diabetes y artritis'),
+(3, 'Oliva', 'Andres','Plaza Angel 84 0º F','olivandres.odf','604 268 832', '12347907N', ''),
+(4, 'Jairo', 'Frias','Carrer Anton 586 9º B','jairofrias.odf','686 996 378', '81455659D',''),
+(5, 'Alfredo', 'Molero','Ronda Adrian 4 7º B','alfredomolero.odf','606 414 100', '50930745M','Tension alta')
+

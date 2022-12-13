@@ -1,5 +1,7 @@
 package org.springframework.samples.farmacia.cliente;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,11 @@ public class ClienteService {
     }
 
     @Transactional(readOnly = true)
+    public List<Cliente> findAll() {
+        return clienteRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
     public Cliente findByClienteId (int id) throws DataAccessException {
         return clienteRepository.findById(id).orElse(null);
     }
@@ -27,8 +34,8 @@ public class ClienteService {
     }
 
     @Transactional
-    public void saveCliente(Cliente cliente) throws DataAccessException {
-        clienteRepository.save(cliente);
+    public Cliente saveCliente(Cliente cliente) throws DataAccessException {
+        return clienteRepository.save(cliente);
     }
 
 }

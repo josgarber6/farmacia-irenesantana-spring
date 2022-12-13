@@ -5,8 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="farmacia" tagdir="/WEB-INF/tags" %>
 
-<farmacia:layout pageName="ventas">
-    <h2>Ventas</h2>
+<farmacia:layout pageName="historialVentas">
+    <h2>Historial de ventas</h2>
 
     <table id="ventaTable" class="table table-striped">
         <thead>
@@ -34,18 +34,11 @@
                   <c:out value="${venta.precioTotal}"/>
                 </td>
                 <td>
-                  <a href="<spring:url value="/ventas/${venta.id}" htmlEscape="true" />">Mas informacion</a>
+                  <a href="<spring:url value="/historialventas" htmlEscape="true" />">Mas informacion</a>
                 </td>
                 
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <div style="padding-top: 20px;">
-      <a href='<spring:url value="/ventas/new" htmlEscape="true"/>''>
-        <button>
-          Nueva venta
-        </button>
-      </a>
-    </div>
 </farmacia:layout>

@@ -19,7 +19,7 @@
             <img class="img-responsive" src="${logoImage}"/>
         </div>
     </div>
-    <h2 id="horaActual">Hora Actual:</h2>
+    <h2 id="horaActual">Hora Actual: hora demo</h2>
     <script type="text/javascript">
         function showTime() {
             myDate = new Date();
@@ -31,8 +31,7 @@
             setTimeout("showTime()", 1000);
         }
         </script>
-    <h2>Fecha y hora del fichaje anterior: </h2>
-    <h2>${control.horarioFichaAnterior}</h2>
+    <h2>Fecha y hora del fichaje anterior: 15/12/2022 22:10 </h2>
     
     <form:form modelAttribute="control">
         <div class="control-group">

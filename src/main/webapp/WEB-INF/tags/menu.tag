@@ -8,7 +8,7 @@
 	description="Name of the active menu: home, owners, vets or error"%>
 
 <nav class="navbar navbar-default" role="navigation">
-	<div class="container">
+	<div style="nav-left: root">
 		<div class="navbar-collapse collapse" id="main-navbar">
 			<ul class="nav navbar-nav">
 
@@ -30,6 +30,18 @@
 					<span>Articulos</span>
 				</farmacia:menuItem>
 
+				<farmacia:menuItem active="${name eq 'estadisticas'}" url="/estadisticas"
+					title="estadisticas">
+					<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+					<span>Estadisticas</span>
+				</farmacia:menuItem>
+
+				<farmacia:menuItem active="${name eq 'historialVentas'}" url="/historialventas"
+					title="historialVentas">
+					<span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+					<span>Historial de ventas</span>
+				</farmacia:menuItem>
+
 				<farmacia:menuItem active="${name eq 'pedido'}" url="/pedido"
 					title="pedido">
 					<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
@@ -48,21 +60,12 @@
 					<span>Clientes</span>
 				</farmacia:menuItem>
 
-				<farmacia:menuItem active="${name eq 'control'}" url="/controlhorario/" dropdown="${true}"
+				<farmacia:menuItem active="${name eq 'control'}" url="/controlhorario/new"
 					title="control">
 					<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 					<span>Control Horario</span>
-
-					<ul class="dropdown-menu">
-						<li>
-							<a href="<c:url value="/controlhorario/new"/>">Nuevo registro</a>
-						</li>
-						<li>
-							<a href="<c:url value="/controlhorario"/>">Ver registros</a>
-						</li>
-					</ul>
-
 				</farmacia:menuItem>
+
 
 
 

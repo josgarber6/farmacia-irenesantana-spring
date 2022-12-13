@@ -27,7 +27,7 @@ public class VentaController {
     this.ventaService = vs;
   }
   
-@GetMapping("/ventas")
+@GetMapping("/historialventas")
 public String listAllVentas(ModelMap model) {
   List<Venta> ventas = ventaService.findAll();
   for(Venta venta: ventas) {
